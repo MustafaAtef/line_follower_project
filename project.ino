@@ -58,16 +58,16 @@ void loop() {
     // Robot will go forward if both left and right sensors on white and middle on black or all the sensors on black (intersections)
     if ((right_read == 0 && middle_read == 1 && left_read == 0) || (right_read  == 1 && middle_read == 1 && left_read == 1))
     {
-      Serial.println("straight");
+      //Serial.println("straight");
         timer_begin = 0;
       move_forward();
     } else if (right_read == 1 && middle_read == 0 && left_read == 0) // right
     {
-      Serial.println("right");
+      //Serial.println("right");
       move_right();
     } else if (right_read == 0 && middle_read == 0 && left_read == 1) // left
     {
-      Serial.println("left");
+      //Serial.println("left");
       move_left();
     } else if (right_read == 0 && middle_read == 0 && left_read == 0) // straight. if this conditoin last for more than 1 second stop the robot
     {
@@ -77,23 +77,23 @@ void loop() {
       }
       duration = millis() - time;
       if (duration >= 750) {
-        Serial.println("stopped");
+        //Serial.println("stopped");
         stop();
         stopped = 1;
         time = millis();
       }
       else {
-      Serial.println("straight on white");
+        //Serial.println("straight on white");
         move_forward();
       }
     }
     else if (right_read == 1 && middle_read == 1 && left_read  == 0) // half circle right turn
     {
-      Serial.println("turn right");
+      //Serial.println("turn right");
       turn_right();
     } else if (right_read == 0 && middle_read == 1 && left_read == 1) // half circle left turn
     {
-      Serial.println("turn left");
+      //Serial.println("turn left");
       turn_left();
     }
 
